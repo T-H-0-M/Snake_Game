@@ -15,10 +15,12 @@ class Snake:
         self.create_snake()
         self.head = self.snake[0]
 
+    # Creates the first three segments of the snake
     def create_snake(self):
         for pos in STARTING_POSITIONS:
             self.add_segment(pos)
 
+    # Moves all segments forward by 20 spaces
     def move(self):
         for x in range(len(self.snake) - 1, 0, -1):
             new_x = self.snake[x - 1].xcor()
@@ -26,6 +28,7 @@ class Snake:
             self.snake[x].setpos(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
 
+    # Adds 1 segment to the snake at the parsed position
     def add_segment(self, position):
         new_segment = Turtle("square")
         new_segment.color("white")
@@ -33,10 +36,11 @@ class Snake:
         new_segment.setpos(position)
         self.snake.append(new_segment)
 
+    # adds a new segment to the snake using the add_segment method
     def extend(self):
-        # Add a new segment to the snake
         self.add_segment(self.snake[-1].position())
 
+    # Following methods set the head of the snake to a specific orientation.
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)

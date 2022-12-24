@@ -13,6 +13,7 @@ class Scoreboard(Turtle):
         self.setpos(0, 280)
         self.refresh_score()
 
+    # Clears current turtle, increases the score by one and refreshes the turtle
     def increase_score(self):
         self.clear()
         self.score += 1

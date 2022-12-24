@@ -29,6 +29,7 @@ screen.onkey(fun=snake.left, key="Left")
 screen.onkey(fun=snake.right, key="Right")
 
 # Main game loop
+count = 0
 game_over = False
 while not game_over:
     snake.move()
@@ -46,11 +47,10 @@ while not game_over:
         game_over = True
 
     # Detect collision with tail
-    count = 0
+
     for segment in snake.snake[1:]:
-        if snake.head.distance(segment) < 10:
-            # game_over = True
-            pass
+        if snake.head.distance(segment) < 10 and count > 2:
+            game_over = True
         print(count)
         count += 1
 

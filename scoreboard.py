@@ -10,7 +10,6 @@ class Scoreboard(Turtle):
         super().__init__()
         self.score = 0
         if exists("highscore.txt"):
-            print("File exists")
             with open("highscore.txt") as file:
                 self.highscore = int(file.read())
         else:

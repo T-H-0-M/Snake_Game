@@ -1,4 +1,6 @@
 from turtle import Turtle
+from os.path import exists
+
 ALIGNMENT = "center"
 FONT = ("TimesNewRoman", 14, "normal")
 
@@ -7,7 +9,12 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.highscore = 0
+        if exists("highscore.txt"):
+            print("File exists")
+            with open("highscore.txt") as file:
+                self.highscore = int(file.read())
+        else:
+            self.highscore = 0
         self.hideturtle()
         self.penup()
         self.color("white")
@@ -36,6 +43,8 @@ class Scoreboard(Turtle):
 
     def reset_score(self):
         if self.score > self.highscore:
+            with open("highscore.txt", mode="w") as file:
+                file.write(str(self.score))
             self.highscore = self.score
         self.score = 0
         self.refresh_score()

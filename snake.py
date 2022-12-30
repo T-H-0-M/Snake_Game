@@ -5,7 +5,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-STARTING_POSITIONS = {(0, 0), (-20, 0), (-40, 0)}
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
 
 class Snake:
@@ -39,6 +39,13 @@ class Snake:
     # adds a new segment to the snake using the add_segment method
     def extend(self):
         self.add_segment(self.snake[-1].position())
+
+    def reset_snake(self): # fix
+        for segment in self.snake:
+            segment.goto(1000, 1000)
+        self.snake.clear()
+        self.create_snake()
+        self.head = self.snake[0]
 
     # Following methods set the head of the snake to a specific orientation.
     def up(self):

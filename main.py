@@ -1,3 +1,11 @@
+"""
+main.py: The main module for running the Snake game.
+
+This module sets up the game screen, initializes the snake, food, and scoreboard objects, and implements the game logic
+and event listeners for controlling the snake's movement.
+
+"""
+
 from turtle import Screen
 from snake import Snake
 from food import Food
